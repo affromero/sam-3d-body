@@ -4,13 +4,18 @@ SAM 3D Body is one part of SAM 3D, a pair of models for object and human mesh re
 
 # SAM 3D Body: Robust Full-Body Human Mesh Recovery
 
+<p align="left">
+<a href="https://ai.meta.com/research/publications/sam-3d-body-robust-full-body-human-mesh-recovery/"><img src='https://img.shields.io/badge/Meta_AI-Paper-4A90E2?logo=meta&logoColor=white' alt='Paper'></a>
+<a href="https://ai.meta.com/blog/sam-3d/"><img src='https://img.shields.io/badge/Project_Page-Blog-9B72F0?logo=googledocs&logoColor=white' alt='Blog'></a>
+<a href="https://huggingface.co/datasets/facebook/sam-3d-body-dataset"><img src='https://img.shields.io/badge/🤗_Hugging_Face-Dataset-F59500?logoColor=white' alt='Dataset'></a>
+<a href="https://www.aidemos.meta.com/segment-anything/editor/convert-body-to-3d"><img src='https://img.shields.io/badge/🤸_Playground-Live_Demo-E85D5D?logoColor=white' alt='Live Demo'></a>
+</p>
+
 [Xitong Yang](https://scholar.google.com/citations?user=k0qC-7AAAAAJ&hl=en)\*, [Devansh Kukreja](https://www.linkedin.com/in/devanshkukreja)\*, [Don Pinkus](https://www.linkedin.com/in/don-pinkus-9140702a)\*, [Anushka Sagar](https://www.linkedin.com/in/anushkasagar), [Taosha Fan](https://scholar.google.com/citations?user=3PJeg1wAAAAJ&hl=en), [Jinhyung Park](https://jindapark.github.io/)⚬, [Soyong Shin](https://yohanshin.github.io/)⚬, [Jinkun Cao](https://www.jinkuncao.com/), [Jiawei Liu](https://jia-wei-liu.github.io/), [Nicolas Ugrinovic](https://www.iri.upc.edu/people/nugrinovic/), [Matt Feiszli](https://scholar.google.com/citations?user=A-wA73gAAAAJ&hl=en&oi=ao)†, [Jitendra Malik](https://people.eecs.berkeley.edu/~malik/)†, [Piotr Dollar](https://pdollar.github.io/)†, [Kris Kitani](https://kriskitani.github.io/)†
 
 ***Meta Superintelligence Labs***
 
 *Core Contributor,  ⚬Intern, †Project Lead
-
-[[`Paper`](https://ai.meta.com/research/publications/sam-3d-body-robust-full-body-human-mesh-recovery/)] [[`Code`](https://github.com/facebookresearch/sam-3d-body)] [[`Website`](https://ai.meta.com/sam3d/)] [[`Demo`](https://www.aidemos.meta.com/segment-anything/editor/convert-body-to-3d)] [[`Dataset`](https://huggingface.co/datasets/facebook/sam-3d-body-dataset)] [[`Blog`](https://ai.meta.com/blog/sam-3d/)] [[`BibTeX`](#citing-sam-3d-body)]
 
 ![SAM 3D Body Model Architecture](assets/model_diagram.png?raw=true)
 
@@ -69,18 +74,13 @@ SAM 3D Body is one part of SAM 3D, a pair of models for object and human mesh re
 **11/19/2025** -- Checkpoints Launched, Dataset Released, Web Demo and Paper are out!
 
 ## Installation
-See [INSTALL.md](INSTALL.md) for instructions.
+See [INSTALL.md](INSTALL.md) for instructions for python environment setup and model checkpoint access.
 
 ## Getting Started
 
-3DB can reconstruct 3D full-body human mesh from a single image, optionally with keypoint/mask prompts and/or hand refinement from the hand decoder. For a quick start, try the following lines of code with models loaded directly from [Hugging Face](https://huggingface.co/facebook):
+3DB can reconstruct 3D full-body human mesh from a single image, optionally with keypoint/mask prompts and/or hand refinement from the hand decoder. 
 
-
-⚠️ Please note that you need to request access to the checkpoints below on the Hugging Face repo. Once accepted, you need to be authenticated to download the checkpoints.
-
-**Available models:**
-- [`facebook/sam-3d-body-dinov3`](https://huggingface.co/facebook/sam-3d-body-dinov3)
-- [`facebook/sam-3d-body-vith`](https://huggingface.co/facebook/sam-3d-body-vith)
+For a quick start, try the following lines of code with models loaded directly from [Hugging Face](https://huggingface.co/facebook) (please make sure to follow [INSTALL.md](INSTALL.md) to request access to our checkpoints.).
 
 
 ```python
@@ -121,10 +121,11 @@ For a complete demo with visualization, see [notebook/demo_human.ipynb](notebook
 
 The table below shows the performance of SAM 3D Body checkpoints released on 11/19/2025.
 
-|      **Backbone**       | **3DPW (MPJPE)** |    **EMDB (MPJPE)**     | **RICH (PVE)** | **COCO (PCK@.05)** |  **LSPET (PCK@.05)** | **Freihand (PA-MPJPE)**
+|      **Backbone (size)**       | **3DPW (MPJPE)** |    **EMDB (MPJPE)**     | **RICH (PVE)** | **COCO (PCK@.05)** |  **LSPET (PCK@.05)** | **Freihand (PA-MPJPE)** 
 | :------------------: | :----------: | :--------------------: | :-----------------: | :----------------: | :----------------: | :----------------: |
-|  DINOv3 <br /> ([config](https://huggingface.co/facebook/sam-3d-body-dinov3/blob/main/model_config.yaml), [checkpoint](https://huggingface.co/facebook/sam-3d-body-dinov3/blob/main/model.ckpt))   |      54.8      |          61.7         |       60.3        |       86.5        | 68.0 | 5.5
-|   ViT-H<br /> ([config](https://huggingface.co/facebook/sam-3d-body-vith/blob/main/model_config.yaml), [checkpoint](https://huggingface.co/facebook/sam-3d-body-vith/blob/main/model.ckpt))    |     54.8   |         62.9         |       61.7        |        86.8       | 68.9 |  5.5
+|  DINOv3-H+ (840M) <br /> ([config](https://huggingface.co/facebook/sam-3d-body-dinov3/blob/main/model_config.yaml), [checkpoint](https://huggingface.co/facebook/sam-3d-body-dinov3/blob/main/model.ckpt))   |      54.8      |          61.7         |       60.3        |       86.5        | 68.0 | 5.5
+|   ViT-H  (631M) <br /> ([config](https://huggingface.co/facebook/sam-3d-body-vith/blob/main/model_config.yaml), [checkpoint](https://huggingface.co/facebook/sam-3d-body-vith/blob/main/model.ckpt))    |     54.8   |         62.9         |       61.7        |        86.8       | 68.9 |  5.5
+
 
 ## SAM 3D Body Dataset
 The SAM 3D Body data is released on [Hugging Face](https://huggingface.co/datasets/facebook/sam-3d-body-dataset). Please follow the [instructions](./data/README.md) to download and process the data.
